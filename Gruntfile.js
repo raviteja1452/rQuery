@@ -15,15 +15,13 @@ module.exports = function( grunt ) {
 	var fs = require( "fs" ),
 		gzip = require( "gzip-js" );
 
-	if ( !grunt.option( "filename" ) ) {
-		grunt.option( "filename", "jquery.js" );
-	}
+	grunt.option( "filename", "rquery.js" );
 
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( "package.json" ),
 		dst: readOptionalJSON( "dist/.destination.json" ),
 		"compare_size": {
-			files: [ "dist/jquery.js", "dist/jquery.min.js" ],
+			files: [ "dist/rquery.js", "dist/rquery.min.js" ],
 			options: {
 				compress: {
 					gz: function( contents ) {
@@ -47,7 +45,7 @@ module.exports = function( grunt ) {
 		},
 		build: {
 			all: {
-				dest: "dist/jquery.js",
+				dest: "dist/rquery.js",
 				minimum: [
 					"core",
 					"selector"
@@ -109,7 +107,7 @@ module.exports = function( grunt ) {
 			// We have to explicitly declare "src" property otherwise "newer"
 			// task wouldn't work properly :/
 			dist: {
-				src: "dist/jquery.js"
+				src: "dist/rquery.js"
 			},
 			dev: {
 				src: [ "src/**/*.js", "Gruntfile.js", "test/**/*.js", "build/**/*.js" ]
@@ -213,13 +211,11 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( "dev", [
 		"build:*:*",
-		"newer:eslint:dev",
 		"newer:uglify",
 		"remove_map_comment"
 	] );
 
 	grunt.registerTask( "default", [
-		"eslint:dev",
 		"build:*:*",
 		"uglify",
 		"remove_map_comment"
