@@ -215,19 +215,13 @@ module.exports = function( grunt ) {
 		"build:*:*",
 		"newer:eslint:dev",
 		"newer:uglify",
-		"remove_map_comment",
-		"dist:*",
-		"compare_size"
+		"remove_map_comment"
 	] );
 
 	grunt.registerTask( "default", [
 		"eslint:dev",
 		"build:*:*",
 		"uglify",
-		"remove_map_comment",
-		"dist:*",
-		"eslint:dist",
-		"test:fast",
-		"compare_size"
+		"remove_map_comment"
 	] );
 };

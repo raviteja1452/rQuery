@@ -30,6 +30,7 @@ define( [
 	"./offset",
 	"./dimensions",
 	"./deprecated",
+	"./rupeescript",
 	"./exports/amd",
 	"./exports/global"
 ], function( jQuery ) {
